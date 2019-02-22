@@ -15,17 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('todo/create', 'TodoController@add');
+Route::post('todo/create', 'TodoController@create');
+
 Route::get('todo_user/edit', 'UserController@edit');
 /*Route::get('todo_user/edit', 'UserController@update');*/
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -13,14 +13,14 @@ class CreateTodoTable extends Migration
      */
     public function up()
     {
-        Schema::create('todo', function (Blueprint $table) {
+        Schema::create('todos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name'); // todoの件名カラム
             $table->dateTime('deadline');  // todoの締め切りカラム
-            $table->integer('importance'); // 重要度カラム
+            $table->integer('importance')->nullable(); // 重要度カラム
             $table->dateTime('processingschedule');  // 実際の処理日カラム
-            $table->string('content'); // 内容カラム
-            $table->integer('group_id'); // グループ分類カラム
+            $table->string('content')->nullable(); // 内容カラム
+            $table->integer('group_id')->nullable(); // グループ分類カラム
 
             $table->timestamps();
         });
