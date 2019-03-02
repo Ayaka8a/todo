@@ -49,6 +49,41 @@ class TodoController extends Controller
      }
 
 
+     public function edit(Request $request)
+       {
+           // News Modelからデータを取得する
+           $todos = Todos::find($request->id);
+           if (empty($todos)) {
+             abort(404);
+           }
+           return view('todo.edit', ['todo_form' => $todos]);
+       }
+
+
+       public function update(Request $request)
+       {
+           // Validationをかける
+           $this->validate($request, Todos::$rules);
+           // News Modelからデータを取得する
+           $todos = Todos::find($request->id);
+           // 送信されてきたフォームデータを格納する
+           $todo_form = $request->all();
+           unset($todo_form['_token']);
+
+           // 該当するデータを上書きして保存する
+           $todos->fill($todo_form)->save();
+
+           return redirect('todo');
+       }
+
+       public function delete(Request $request)
+  {
+      // 該当するNews Modelを取得
+      $todo = Todos::find($request->id);
+      // 削除する
+      $todo->delete();
+      return redirect('todo');
+  }
 
 
 }

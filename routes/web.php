@@ -17,5 +17,11 @@ Route::get('/', function () {
 Route::get('todo/create', 'TodoController@add');
 Route::post('todo/create', 'TodoController@create');
 
+Route::get('todo', 'TodoController@index');
+Route::get('todo/edit', 'TodoController@edit');
+Route::post('todo/edit', 'TodoController@update');
+Route::get('todo/delete', 'TodoController@delete');
+
+
 Route::get('todo_user/edit', 'UserController@edit');
 /*Route::get('todo_user/edit', 'UserController@update');*/
