@@ -23,7 +23,7 @@ Route::post('todo/edit', 'TodoController@update');
 Route::get('todo/delete', 'TodoController@delete');
 
 
-Route::get('todo_user/edit', 'UserController@edit');
+Route::get('todo_user/edit', 'UserController@edit')->middleware('auth');
 /*Route::get('todo_user/edit', 'UserController@update');*/
 
 Auth::routes();
