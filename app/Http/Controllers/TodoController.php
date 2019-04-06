@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Todos;
+use App\History;
+use Carbon\Carbon;
 
 class TodoController extends Controller
 {
@@ -64,7 +66,7 @@ class TodoController extends Controller
        {
            // Validationをかける
            $this->validate($request, Todos::$rules);
-           // News Modelからデータを取得する
+           // Todo Modelからデータを取得する
            $todos = Todos::find($request->id);
            // 送信されてきたフォームデータを格納する
            $todo_form = $request->all();
@@ -72,6 +74,11 @@ class TodoController extends Controller
 
            // 該当するデータを上書きして保存する
            $todos->fill($todo_form)->save();
+
+           $history = new History;
+           $history->todos_id = $todos->id;
+           $history->edited_at = Carbon::now();
+           $history->save();
 
            return redirect('todo');
        }

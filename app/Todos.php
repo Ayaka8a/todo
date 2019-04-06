@@ -15,7 +15,12 @@ class Todos extends Model
         'name' => 'required',
         'deadline' => 'required',
         'processingschedule' => 'required',
+        
 
     );
-
+   //Todosモデルに関連付けを行う
+   public function histories()
+   {
+     return $this->hasMany('App\History');
+   }
 }
