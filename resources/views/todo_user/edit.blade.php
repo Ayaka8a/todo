@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>ユーザー情報</h2>
+                <h2>ユーザーログイン情報</h2>
             </div>
         </div>
     </div>

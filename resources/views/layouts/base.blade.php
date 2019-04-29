@@ -13,7 +13,7 @@
         <title>@yield('title')</title>
 
         <!-- Scripts -->
-         {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
+         {{-- Laravel標準で用意されているJavascript読み込み --}}
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
@@ -21,10 +21,12 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        {{-- Laravel標準で用意されているCSSを読み込みます --}}
+        {{-- Laravel標準で用意されているCSS読み込み --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
         <link href="{{ asset('css/base.css') }}" rel="stylesheet">
+        {{-- index.blade.phpの部品部分のCSS --}}
+        <link href="{{ asset('css/contents.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">

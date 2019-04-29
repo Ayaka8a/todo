@@ -1,5 +1,9 @@
 
 
+
+
+
+
 {{-- layouts/base.blade.phpを読み込む --}}
 @extends('layouts.base')
 
@@ -10,23 +14,7 @@
 {{-- base.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 @section('content')
 
-<?php
-$timestamp = time();
-echo date("y/m/d", $timestamp).'<br>';
 
-$weekDays = array();
-$i = 0;
-while($i < 7){
-$timestampStatic = strtotime("+{$i} day");
-$day = date("Y/m/d", $timestampStatic);
-$weekDays["{$i}"] = $day;
-$i++;
-}
-echo $weekDays[0].'<br>';
-echo $weekDays[6];
-
-
-?>
 <div class="container">
        <div class="row">
            <h2>TODO一覧</h2>
@@ -51,34 +39,46 @@ echo $weekDays[6];
            </div>
        </div>
 月
-       <div class="contents">
+       <div class="row">
+           <div class="list-news col-md-12 mx-auto">
+               <div class="row">
+                   <table class="table table-light">
+                       <thead>
+                           <tr>
+                               <th width="10%">ID</th>
+                               <th width="20%">タイトル</th>
+                               <th width="50%">本文</th>
+                               <th width="10%">操作</th>
+                           </tr>
+                       </thead>
+                       <tbody>
 
-
-
-
-
-
-                                
-
-                                  @foreach($posts as $todo)
-<div class="day_week">
-                                   <p>{{ $todo->id }}</p>
-                                   <p>{{ str_limit($todo->name, 100) }}</p>
-                                   <p>{{ str_limit($todo->content, 250) }}</p>
-
+                           @foreach($posts as $todo)
+                               <tr>
+                                   <th>{{ $todo->id }}</th>
+                                   <td>{{ str_limit($todo->name, 100) }}</td>
+                                   <td>{{ str_limit($todo->content, 250) }}</td>
+                                   <td>
                                        <div>
                                            <a href="{{ action('TodoController@edit', ['id' => $todo->id]) }}">編集</a>
                                        </div>
                                        <div>
                                            <a href="{{ action('TodoController@delete', ['id' => $todo->id]) }}">削除</a>
                                        </div>
-                                    </div>
-                                   @endforeach
+                                   </td>
+
+                               </tr>
+                           @endforeach
+                       </tbody>
+                   </table>
+               </div>
+           </div>
+       </div>
+   </div>
 
 
 
 
 
-        </div>
-</div>
+
 @endsection

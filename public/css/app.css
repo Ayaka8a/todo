@@ -1661,11 +1661,11 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .table-hover tbody tr:hover {
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: rgba(255, 255, 255, 0.075);
 }
 
 .table-primary,
@@ -1810,7 +1810,7 @@ pre code {
 .table-light td,
 .table-light thead th,
 .table-light tbody + tbody {
-  border-color: #fbfcfc;
+  border-color: #ececf6;
 }
 
 .table-hover .table-light:hover {
@@ -10490,4 +10490,3 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-

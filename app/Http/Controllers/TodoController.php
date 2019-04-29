@@ -15,6 +15,19 @@ class TodoController extends Controller
       return view('todo.create');
   }
 
+  public function weekDays()
+  {
+  $weekDays = array();
+  $i = 0;
+  while($i < 7){
+  $timestampStatic = strtotime("+{$i} day");
+  $day = date("Y/m/d", $timestampStatic);
+  $weekDays["{$i}"] = $day;
+  $i++;
+  }
+  return view('todo', compact('weekDays'));
+}
+
   public function create(Request $request)
     {
       // 以下を追記
@@ -33,8 +46,8 @@ class TodoController extends Controller
       // データベースに保存する
       $todos->fill($form);
       $todos->save();
-      // admin/news/createにリダイレクトする
-        return redirect('todo/create');
+      // todo/createにリダイレクトする
+        return redirect('todo');
     }
 
     public function index(Request $request)
@@ -53,7 +66,7 @@ class TodoController extends Controller
 
      public function edit(Request $request)
        {
-           // News Modelからデータを取得する
+           // Todos Modelからデータを取得する
            $todos = Todos::find($request->id);
            if (empty($todos)) {
              abort(404);
@@ -85,7 +98,7 @@ class TodoController extends Controller
 
        public function delete(Request $request)
   {
-      // 該当するNews Modelを取得
+      // 該当するTodos Modelを取得
       $todo = Todos::find($request->id);
       // 削除する
       $todo->delete();

@@ -1,0 +1,9 @@
+.contents {
+  height: 500px;
+  width: 1170px;
+}
+
+.day_week {
+  float: left;
+  width: 160px;
+}
